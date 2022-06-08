@@ -1,26 +1,16 @@
-import { useState } from "react";
-
-const TodoList = ({ item, handleClick }) => {
-  //   const theButtons = ["Remove", "Check", "Edit", "Archive"];
-  const [bool, setBool] = useState(true);
+const TodoList = ({ item, handleClick, handleBool, bool }) => {
   return (
     <div>
-      <p
-        style={{
-          textDecoration: bool ? "" : "line-through",
-        }}
-      >
-        {item}
-      </p>
-
-      <button className="checkButton" onClick={() => setBool(!bool)}>
-        {bool ? "Check" : "Un-Check"}
-      </button>
-      <button onClick={handleClick} className="removeButton">
-        Remove
-      </button>
+      {item}
+      <button onClick={handleClick}>Remove</button>
+      <button onClick={handleBool}>{bool ? "True" : "False"}</button>
+      {/* <button onClick={(e) => handleBool(e)}>{buttonText}</button> */}
+      {/* <button onClick={handleBool} {bool ? "Uncheck" : "Check"}></button> */}
+      {/* <button onClick={() => setBool(!bool)}>Click</button> */}
     </div>
   );
 };
 
 export default TodoList;
+
+
