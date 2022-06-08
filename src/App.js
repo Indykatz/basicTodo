@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+import TodoList from "./components/TodoList";
+import AddItem from "./components/AddItem";
+
+const App = () => {
+  // list useState
+  const [item, setItems] = useState([
+    { item: "example task 1" },
+    { item: "example task 2" },
+    { item: "example task 3" },
+    { item: "example task 4" },
+  ]);
+  // bool state click
+  // const [bool, setBool] = useState(true);
+
+  // add item
+  const [itemInput, setItemInput] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setItems([...item, { item: itemInput }]);
+    setItemInput("");
+  };
+
+  // Handle click for removing
+  const handleClick = (index) => {
+    let storeItems = [...item];
+    storeItems.splice(index, 1);
+    setItems(storeItems);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
+      <h1>Todo List</h1>
+      <p>
+        {item.map((item, index) => {
+          return (
+            <TodoList
+              item={item.item}
+              key={index}
+              handleClick={() => handleClick(index)}
+            />
+          );
+        })}
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <AddItem
+            handleSubmit={handleSubmit}
+            itemInput={itemInput}
+            setItemInput={setItemInput}
+          />
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </p>
     </div>
   );
-}
+};
 
 export default App;
