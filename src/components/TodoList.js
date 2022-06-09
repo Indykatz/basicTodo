@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-const ToDoList = ({ item, handleClick, bool, boolClick }) => {
+const ToDoList = ({ item, handleClick, bool, handleBool }) => {
   return (
     <div>
       <div
@@ -10,7 +10,7 @@ const ToDoList = ({ item, handleClick, bool, boolClick }) => {
         }}
       >
         <h3>{item}</h3>
-        <button className="checkButton" onClick={boolClick}>
+        <button className="checkButton" onClick={handleBool}>
           {bool ? "Uncheck" : "Check"}
         </button>
         <button onClick={handleClick} className="removeButton">

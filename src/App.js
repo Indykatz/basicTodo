@@ -45,10 +45,10 @@ const App = () => {
     setItems([...item, { item: itemInput }]);
     setItemInput("");
   };
-
   return (
     <div>
       <h1>Todo List</h1>
+
       {item.map((item, index) => {
         return (
           <TodoList
