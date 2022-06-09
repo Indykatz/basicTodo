@@ -1,16 +1,17 @@
-const TodoList = ({ item, handleClick, boolClick, bool, setBool }) => {
+import { useState } from "react";
+
+const TodoList = ({ item, handleClick }) => {
+  const [bool, setBool] = useState(true);
+
   return (
     <div>
-      <p
-        style={{
-          textDecoration: bool ? "line-through" : "",
-        }}
-      >
-        {item}
-      </p>
+      {bool ? (
+        <p>{item}</p>
+      ) : (
+        <p style={{ textDecoration: "line-through", color: "green" }}>{item}</p>
+      )}
+      <button onClick={() => setBool(!bool)}>Check</button>
       <button onClick={handleClick}>Remove</button>
-      <button onClick={boolClick}>{bool ? "Uncheck" : "Check"}</button>
-      {/* {bool ? "Uncheck" : "Check"} */}
     </div>
   );
 };
