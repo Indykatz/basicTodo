@@ -5,20 +5,31 @@ import TodoList from "./components/TodoList";
 import AddItem from "./components/AddItem";
 
 const App = () => {
+  const [bool, setBool] = useState(true);
   // list useState generates a placeholder list
   const [item, setItems] = useState([
-    { item: "example task 1" },
-    { item: "example task 2" },
-    { item: "example task 3" },
-    { item: "example task 4" },
+    { item: "example task 1", checked: bool },
+    { item: "example task 2", checked: bool },
+    { item: "example task 3", checked: bool },
+    { item: "example task 4", checked: bool },
   ]);
 
-  // const [bool, setBool] = useState(true);
-  // // handleBool for checking
-  // const boolClick = (index) => {
-  //   console.log("clicked");
-  //   setBool(!bool);
-  // };
+  // handleBool for checking
+  const handleBool = (index) => {
+    let storeItems = [...item];
+    let indexedItem = storeItems[index];
+    console.log(indexedItem.checked);
+    setBool((indexedItem.checked = !bool));
+    ifChecked(indexedItem.checked);
+  };
+
+  const ifChecked = (i) => {
+    if ((i = bool)) {
+      console.log("its true");
+    } else {
+      console.log("its false");
+    }
+  };
 
   // Handle click for removing
   const handleClick = (index) => {
@@ -44,7 +55,7 @@ const App = () => {
             item={item.item}
             key={index}
             handleClick={() => handleClick(index)}
-            // boolClick={() => boolClick(index)}
+            handleBool={() => handleBool(index)}
           />
         );
       })}
