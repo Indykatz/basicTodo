@@ -1,9 +1,15 @@
 const TodoList = ({ item, handleClick, boolClick, bool, setBool }) => {
   return (
     <div>
-      {item}
+      <p
+        style={{
+          textDecoration: bool ? "line-through" : "",
+        }}
+      >
+        {item}
+      </p>
       <button onClick={handleClick}>Remove</button>
-      <button onClick={boolClick}>{bool ? "False" : "True"}</button>
+      <button onClick={boolClick}>{bool ? "Uncheck" : "Check"}</button>
     </div>
   );
 };
