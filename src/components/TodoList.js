@@ -9,7 +9,8 @@ const TodoList = ({ item, handleClick, boolClick, bool }) => {
         {item}
       </p>
       <button onClick={handleClick}>Remove</button>
-      <button onClick={boolClick}>{bool ? "Uncheck" : "Check"}</button>
+      <button onClick={boolClick}>Check</button>
+      {/* {bool ? "Uncheck" : "Check"} */}
     </div>
   );
 };
