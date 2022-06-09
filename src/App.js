@@ -15,9 +15,9 @@ const App = () => {
 
   const [bool, setBool] = useState(true);
   // handleBool for checking
-  const boolClick = () => {
+  const boolClick = (index) => {
     console.log("clicked");
-    bool ? setBool(false) : setBool(true);
+    bool ? setBool(!bool) : setBool(true);
   };
 
   // Handle click for removing
@@ -44,7 +44,7 @@ const App = () => {
             item={item.item}
             key={index}
             handleClick={() => handleClick(index)}
-            boolClick={() => boolClick()}
+            boolClick={() => boolClick(index)}
           />
         );
       })}
