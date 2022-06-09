@@ -1,16 +1,11 @@
-const TodoList = ({ item, handleClick, handleBool, bool }) => {
+const TodoList = ({ item, handleClick, boolClick, bool, setBool }) => {
   return (
     <div>
       {item}
       <button onClick={handleClick}>Remove</button>
-      <button onClick={handleBool}>{bool ? "True" : "False"}</button>
-      {/* <button onClick={(e) => handleBool(e)}>{buttonText}</button> */}
-      {/* <button onClick={handleBool} {bool ? "Uncheck" : "Check"}></button> */}
-      {/* <button onClick={() => setBool(!bool)}>Click</button> */}
+      <button onClick={boolClick}>{bool ? "False" : "True"}</button>
     </div>
   );
 };
 
 export default TodoList;
-
-

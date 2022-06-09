@@ -13,16 +13,11 @@ const App = () => {
     { item: "example task 4" },
   ]);
 
-  // handleBool for checking
   const [bool, setBool] = useState(true);
-  const handleBool = (e) => {
-    if (bool) {
-      setBool(!bool);
-      console.log(e.bool);
-    } else {
-      setBool(bool);
-    }
-    console.log("checked");
+  // handleBool for checking
+  const boolClick = () => {
+    console.log("clicked");
+    bool ? setBool(false) : setBool(true);
   };
 
   // Handle click for removing
@@ -49,7 +44,7 @@ const App = () => {
             item={item.item}
             key={index}
             handleClick={() => handleClick(index)}
-            handleBool={() => handleBool(index)}
+            boolClick={() => boolClick()}
           />
         );
       })}
