@@ -1,4 +1,4 @@
-const TodoList = ({ item, handleClick, boolClick, bool, setBool }) => {
+const TodoList = ({ item, handleClick, boolClick, bool }) => {
   return (
     <div>
       <p

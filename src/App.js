@@ -6,16 +6,15 @@ import AddItem from "./components/AddItem";
 
 const App = () => {
   // list useState generates a placeholder list
-  const [item, setItems] = useState([
-    { item: "example task 1" },
-    { item: "example task 2" },
-    { item: "example task 3" },
-    { item: "example task 4" },
+  const [item, setItems, bool, setBool] = useState([
+    { item: "example task 1", state: true },
+    { item: "example task 2", state: true },
+    { item: "example task 3", state: true },
+    { item: "example task 4", state: true },
   ]);
 
-  const [bool, setBool] = useState(true);
   // handleBool for checking
-  const boolClick = (index) => {
+  const boolClick = () => {
     console.log("clicked");
     bool ? setBool(!bool) : setBool(true);
   };
@@ -44,7 +43,7 @@ const App = () => {
             item={item.item}
             key={index}
             handleClick={() => handleClick(index)}
-            boolClick={() => boolClick(index)}
+            boolClick={() => boolClick()}
           />
         );
       })}
