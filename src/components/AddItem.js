@@ -12,7 +12,6 @@ const AddItem = ({ handleSubmit, itemInput, setItemInput }) => {
             }}
           />
         </label>
-        {/* input submit button */}
         <input className="submitButton" type="submit" />
       </form>
     </div>

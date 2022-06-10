@@ -1,21 +1,12 @@
-const ToDoList = ({ item, bool, handleClick, handleCheck }) => {
-  if ({ bool }) {
+const ToDoList = ({ todoItem, todoChecked, handleClick, handleCheck }) => {
+  if ({ todoChecked }) {
     return (
       <div>
-        <p
-          style={{
-            textDecoration: bool ? "line-through" : "",
-          }}
-        >
-          {item}
+        <p style={{ textDecoration: todoChecked ? "line-through" : "" }}>
+          {todoItem}
         </p>
-        <button
-          style={{
-            textDecoration: bool ? "line-through" : "",
-          }}
-          onClick={handleCheck}
-        >
-          Check
+        <button onClick={handleCheck}>
+          {todoChecked ? "Un-check" : "Check"}
         </button>
         <button onClick={handleClick} className="removeButton">
           Remove
