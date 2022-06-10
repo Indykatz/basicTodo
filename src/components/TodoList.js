@@ -6,6 +6,8 @@ const ToDoList = ({
   handleArchive,
   handleEdit,
   newValue,
+  setNewValue,
+  index,
 }) => {
   if ({ todoChecked }) {
     return (
@@ -19,8 +21,19 @@ const ToDoList = ({
         <button onClick={handleClick}>Remove</button>
         <button onClick={handleArchive}>Archive</button>
         {/* edit */}
-        <input type="text" value={newValue} />
-        <button onClick={handleEdit}>Edit</button>
+        <input
+          type="text"
+          value={newValue}
+          onChange={(e) => setNewValue(e.target.value)}
+        />
+        <button
+          onClick={() => {
+            handleEdit(index, newValue);
+            setNewValue("");
+          }}
+        >
+          Edit
+        </button>
       </div>
     );
   }

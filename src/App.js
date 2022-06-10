@@ -47,7 +47,12 @@ function App() {
   };
   // Handle Edit
   // Trying to figure out how to handle the edit
-  const handleEdit = (index) => {};
+  const handleEdit = (index, newValue) => {
+    console.log(newValue);
+    const existingItems = [...item];
+    existingItems[index].item = newValue;
+    setItem(existingItems);
+  };
 
   // return
   return (
@@ -72,7 +77,7 @@ function App() {
             handleClick={() => handleClick(index)}
             handleCheck={() => handleCheck(index)}
             handleArchive={() => handleArchive(index)}
-            handleEdit={() => handleEdit(index)}
+            handleEdit={handleEdit}
           />
         );
       })}
