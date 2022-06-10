@@ -46,13 +46,8 @@ function App() {
     setItemInput("");
   };
   // Handle Edit
-  // const [newInputValue, setNewValues] = useState("");
-  const handleEdit = (index, newInputValue) => {
-    let storeItems = [...item];
-    const indexOfItem = storeItems[index];
-    console.log(indexOfItem.item);
-    console.log(newInputValue);
-  };
+  // Trying to figure out how to handle the edit
+  const handleEdit = (index) => {};
 
   // return
   return (
