@@ -1,71 +1,63 @@
 import "./App.css";
 import { useState } from "react";
-
-import TodoList from "./components/TodoList";
 import AddItem from "./components/AddItem";
-
-const App = () => {
-  const [bool, setBool] = useState(true);
-  // list useState generates a placeholder list
-  const [item, setItems] = useState([
-    { item: "example task 1", checked: bool },
-    { item: "example task 2", checked: bool },
-    { item: "example task 3", checked: bool },
-    { item: "example task 4", checked: bool },
+import ToDoList from "./components/TodoList";
+// App
+function App() {
+  const [item, setItem] = useState([
+    { item: "example task 1", checked: false },
+    { item: "example task 2", checked: false },
+    { item: "example task 3", checked: false },
+    { item: "example task 4", checked: false },
   ]);
-
-  // handleBool for checking
-  const handleBool = (index) => {
+  const handleCheck = (index) => {
     let storeItems = [...item];
-    let indexedItem = storeItems[index];
-    console.log(indexedItem.checked);
-    setBool((indexedItem.checked = !bool));
-    ifChecked(indexedItem.checked);
+    const indexOfItem = storeItems[index];
+    const currentCheck = indexOfItem.checked;
+    const newCheck = !currentCheck;
+    indexOfItem.checked = newCheck;
+    setItem(storeItems);
   };
 
-  const ifChecked = (i) => {
-    if ((i = bool)) {
-      console.log("its true");
-    } else {
-      console.log("its false");
-    }
-  };
-
-  // Handle click for removing
+  // Handle click for removing (original at bottom)
   const handleClick = (index) => {
     let storeItems = [...item];
     storeItems.splice(index, 1);
-    setItems(storeItems);
+    setItem(storeItems);
   };
 
   // add item handle submit
   const [itemInput, setItemInput] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    setItems([...item, { item: itemInput }]);
+    setItem([...item, { item: itemInput }]);
     setItemInput("");
   };
+  // return
   return (
     <div>
       <h1>Todo List</h1>
 
       {item.map((item, index) => {
         return (
-          <TodoList
+          <ToDoList
             item={item.item}
+            bool={item.checked}
             key={index}
             handleClick={() => handleClick(index)}
-            handleBool={() => handleBool(index)}
+            handleCheck={() => handleCheck(index)}
           />
         );
       })}
-      <AddItem
-        handleSubmit={handleSubmit}
-        itemInput={itemInput}
-        setItemInput={setItemInput}
-      />
+      <div>
+        <AddItem
+          handleSubmit={handleSubmit}
+          itemInput={itemInput}
+          setItemInput={setItemInput}
+        />
+      </div>
     </div>
   );
-};
+}
 
 export default App;
