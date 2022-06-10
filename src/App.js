@@ -52,6 +52,14 @@ function App() {
   return (
     <div>
       <h1>Todo List</h1>
+      {/* add new item */}
+      <div>
+        <AddItem
+          handleSubmit={handleSubmit}
+          itemInput={itemInput}
+          setItemInput={setItemInput}
+        />
+      </div>
       {/* map list */}
       {item.map((item, index) => {
         return (
@@ -66,14 +74,6 @@ function App() {
           />
         );
       })}
-      {/* add new item */}
-      <div>
-        <AddItem
-          handleSubmit={handleSubmit}
-          itemInput={itemInput}
-          setItemInput={setItemInput}
-        />
-      </div>
       <div>
         <h1>Archive</h1>
         {archive.map((archive, index) => {
