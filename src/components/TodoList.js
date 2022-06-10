@@ -1,4 +1,10 @@
-const ToDoList = ({ todoItem, todoChecked, handleClick, handleCheck }) => {
+const ToDoList = ({
+  todoItem,
+  todoChecked,
+  handleClick,
+  handleCheck,
+  handleArchive,
+}) => {
   if ({ todoChecked }) {
     return (
       <div>
@@ -8,12 +14,13 @@ const ToDoList = ({ todoItem, todoChecked, handleClick, handleCheck }) => {
         <button onClick={handleCheck}>
           {todoChecked ? "Un-check" : "Check"}
         </button>
-        <button onClick={handleClick} className="removeButton">
-          Remove
-        </button>
+        <button onClick={handleClick}>Remove</button>
+        <button onClick={handleArchive}>Archive</button>
       </div>
     );
   }
 };
 
 export default ToDoList;
+
+// handleArchive
