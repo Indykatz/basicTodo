@@ -4,6 +4,8 @@ const ToDoList = ({
   handleClick,
   handleCheck,
   handleArchive,
+  handleEdit,
+  newInputValue,
 }) => {
   if ({ todoChecked }) {
     return (
@@ -16,6 +18,8 @@ const ToDoList = ({
         </button>
         <button onClick={handleClick}>Remove</button>
         <button onClick={handleArchive}>Archive</button>
+        <input type="text" value={newInputValue} />
+        <button onClick={handleEdit}>Edit</button>
       </div>
     );
   }

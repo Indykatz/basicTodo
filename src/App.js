@@ -3,7 +3,6 @@ import { useState } from "react";
 import AddItem from "./components/AddItem";
 import ToDoList from "./components/TodoList";
 import Archive from "./components/Archive";
-// import Archive from "./components/Archive";
 
 // App
 function App() {
@@ -39,13 +38,20 @@ function App() {
     setArchive(storeArchive);
     handleClick(index);
   };
-
   // add item handle submit new items
   const [itemInput, setItemInput] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setItem([...item, { item: itemInput }]);
     setItemInput("");
+  };
+  // Handle Edit
+  // const [newInputValue, setNewValues] = useState("");
+  const handleEdit = (index, newInputValue) => {
+    let storeItems = [...item];
+    const indexOfItem = storeItems[index];
+    console.log(indexOfItem.item);
+    console.log(newInputValue);
   };
 
   // return
@@ -71,6 +77,7 @@ function App() {
             handleClick={() => handleClick(index)}
             handleCheck={() => handleCheck(index)}
             handleArchive={() => handleArchive(index)}
+            handleEdit={() => handleEdit(index)}
           />
         );
       })}
@@ -78,7 +85,7 @@ function App() {
         <h1>Archive</h1>
         {archive.map((archive, index) => {
           return (
-            // runs ToDoList component
+            // runs archive component
             <Archive archiveItem={archive} key={index} />
           );
         })}
@@ -88,5 +95,3 @@ function App() {
 }
 
 export default App;
-
-// handleArchive
